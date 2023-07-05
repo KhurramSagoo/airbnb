@@ -1,0 +1,42 @@
+import React from "react";
+import Logo from "./images/airbnb.svg";
+import Group from "./images/Group.png";
+import Card from "./Card";
+import data from "./data";
+import "./card-style.css";
+
+function App() {
+  const getCard = data.map((item) => (
+    <Card
+      key={item.id}
+      img={item.coverImg}
+      rating={item.stats.rating}
+      reviewCount={item.stats.reviewCount}
+      location={item.location}
+      title={item.title}
+      price={item.price}
+      openSpots={item.openSpots}
+    />
+  ));
+
+  return (
+    <main>
+      <div className="nav">
+        <img className="logo" src={Logo} alt="logo" />
+      </div>
+      <div className="header">
+        <img className="group-image" src={Group} alt="group77" />
+        <div className="data">
+          <h1 className="heading">Online Experiences</h1>
+          <p>
+            Join unique interactive activities led by one-of-a-kind hosts—all
+            without leaving home.
+          </p>
+        </div>
+      </div>
+      <div className="card-section">{getCard}</div>
+    </main>
+  );
+}
+
+export default App;
